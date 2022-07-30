@@ -1,10 +1,12 @@
 const Express = require('express');
 const { randomBytes } = require('crypto');
+const cors = require('cors');
 
 const app = Express();
 const commentsByPostId = {}
 
 app.use(Express.json());
+app.use(cors());
 
 app.post('posts/:id/comments', (request, response) => {
   const commentId = randomBytes(8).toString('hex');
