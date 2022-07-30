@@ -6,7 +6,7 @@ const app = Express();
 
 app.use(Express.json());
 
-app.get("/posts", (request, response) => {
+app.get("/posts", (_, response) => {
   response.send(postsStore);
 });
 
