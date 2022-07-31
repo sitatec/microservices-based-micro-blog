@@ -1,11 +1,15 @@
 import React from "react";
 import PostForm from "./PostForm";
+import PostList from "./post/PostList";
 
 const App = () => {
   return (
     <div className="container">
       <h2>Create Post</h2>
       <PostForm />
+      <hr />
+      <h2>Posts</h2>
+      <PostList />
     </div>
   );
 };

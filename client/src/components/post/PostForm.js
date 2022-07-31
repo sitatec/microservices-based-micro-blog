@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
+import PostService from "../services/post_service";
+
+const postService = new PostService();
 
 const PostForm = () => {
   const [title, setTitle] = useState("");
@@ -8,7 +10,7 @@ const PostForm = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     setSubmitting(true);
-    await axios.post("http://localhost:4000/posts", { title });
+    await postService.createPost({title});
     setTitle("");
     setSubmitting(false);
   };
@@ -16,8 +18,8 @@ const PostForm = () => {
   let Button;
   if (isSubmitting) {
     Button = (
-      <div class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
+      <div className="spinner-border text-primary" role="status">
+        <span className="sr-only">Loading...</span>
       </div>
     );
   } else {
@@ -31,7 +33,7 @@ const PostForm = () => {
           <label>Title</label>
           <input
             value={title}
-            type={"text"}
+            type="text"
             onChange={(e) => setTitle(e.target.value)}
             className="form-control"
             required
