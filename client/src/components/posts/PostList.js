@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PostService from "../../services/post_service";
+import CommentForm from "../comments/CommentForm";
+import CommentList from "../comments/CommentList";
 
 const postService = new PostService();
 
@@ -26,7 +28,11 @@ const PostCard = ({ post }) => {
   return (
     <div className="col-md-4">
       <div className="card mb-4 ">
-        <div className="card-body">{post.title}</div>
+        <div className="card-body">
+          <h3 className="card-title">{post.title}</h3>
+          <CommentList postId={post.id} />
+          <CommentForm postId={post.id} />
+        </div>
       </div>
     </div>
   );

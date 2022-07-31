@@ -1,5 +1,5 @@
 import React from "react";
-import PostForm from "./PostForm";
+import PostForm from "./posts/PostForm";
 import PostList from "./posts/PostList";
 
 const App = () => {

@@ -1,4 +1,4 @@
-import { POST_ENDPOINT } from "../constants/endpoints";
+import { POST_ENDPOINT } from "../constants/urls";
 import ApiClient from "./api_client";
 
 export default class PostService {

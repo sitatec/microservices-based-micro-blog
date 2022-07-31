@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import SingleInputForm, {
   useSingleInputFormProps,
 } from "../core/forms/SingleInputForm";
-import PostService from "../services/post_service";
+import PostService from "../../services/post_service";
 
 const postService = new PostService();
 
