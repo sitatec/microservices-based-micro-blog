@@ -23,3 +23,7 @@ app.get('posts/:id/comments', (request, response) => {
   const postId = request.query.id;
   response.send(commentsByPostId[postId] || []);
 });
+
+app.listen(4001, () => {
+  console.log('Listening on port 4001');
+})

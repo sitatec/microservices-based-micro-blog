@@ -1,1 +1,0 @@
-export const POST_ENDPOINT = 'http://localhost:4000/posts';
