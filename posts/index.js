@@ -12,7 +12,7 @@ app.get("/posts", (_, response) => {
   response.send(postsStore);
 });
 
-app.post("/posts", (request, response) => {
+app.post("/posts", (_, response) => {
   const postId = randomBytes(8).toString("hex");
 
   postsStore[postId] = {
@@ -21,6 +21,12 @@ app.post("/posts", (request, response) => {
   };
 
   response.status(201).send({ id: postId });
+});
+
+app.post("/events", (_, response) => {
+  console.log("Received Event", req.body.type);
+
+  response.send({});
 });
 
 app.listen(4000, () => {

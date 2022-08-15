@@ -11,6 +11,10 @@ export default class PostService {
     return this.apiClient.get(POST_ENDPOINT);
   };
 
+  getPostsWithComments = () => {
+    return this.apiClient.get("http://localhost:4002/posts");
+  };
+
   createPost = (postData) => {
     return this.apiClient.post(POST_ENDPOINT, postData);
   }

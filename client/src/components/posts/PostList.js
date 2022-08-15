@@ -9,7 +9,7 @@ const PostList = () => {
   const [posts, setPosts] = useState({});
 
   const fetchPosts = async () => {
-    const response = await postService.getPosts();
+    const response = await postService.getPostsWithComments();
     setPosts(response.data);
   };
 
@@ -30,7 +30,7 @@ const PostCard = ({ post }) => {
       <div className="card mb-4 ">
         <div className="card-body">
           <h3 className="card-title">{post.title}</h3>
-          <CommentList postId={post.id} />
+          <CommentList comments={post.comments} />
           <CommentForm postId={post.id} />
         </div>
       </div>
