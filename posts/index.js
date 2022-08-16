@@ -12,7 +12,7 @@ app.get("/posts", (_, response) => {
   response.send(postsStore);
 });
 
-app.post("/posts", (_, response) => {
+app.post("/posts", async (_, response) => {
   const postId = randomBytes(8).toString("hex");
 
   postsStore[postId] = {
@@ -20,6 +20,11 @@ app.post("/posts", (_, response) => {
     title: request.body.title,
   };
 
+  await axios.post("http://event-bus-cluster-ip:4005/events", {
+    type: "PostCreated",
+    data: postsStore[postId],
+  });
+  
   response.status(201).send({ id: postId });
 });
 
