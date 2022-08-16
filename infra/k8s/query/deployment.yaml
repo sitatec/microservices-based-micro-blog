@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: query
+spec:
+  selector:
+    app: query
+  template:
+    metadata:
+      labels:
+        app: query
+    spec:
+      containers:
+        - name: query
+          image: beretedocker/query
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 500m
+            limits:
+              memory: 256Mi
+              cpu: 1

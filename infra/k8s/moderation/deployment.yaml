@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moderation-deployment
+spec:
+  selector:
+    app: moderation
+  template:
+    metadata:
+      labels:
+        app: moderation
+    spec:
+      containers:
+        - name: moderation
+          image: beretedocker/moderation
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 500m
+            limits:
+              memory: 256Mi
+              cpu: 1
