@@ -10,6 +10,8 @@ app.use(cors());
 const posts = {};
 
 const handleEvent = (type, data) => {
+  console.log("Event received:", type, "---- Data:", data);
+  console.log("DB content:", JSON.stringify(posts));
   if (type === "PostCreated") {
     const { id, title } = data;
 
@@ -36,7 +38,7 @@ const handleEvent = (type, data) => {
   }
 };
 
-app.get("/posts", (_, response) => {
+app.get("/posts-with-comments", (_, response) => {
   response.send(posts);
 });
 

@@ -12,7 +12,7 @@ export default class PostService {
   };
 
   getPostsWithComments = () => {
-    return this.apiClient.get("http://blog.com/posts");
+    return this.apiClient.get("http://blog.com/posts-with-comments");
   };
 
   createPost = (postData) => {

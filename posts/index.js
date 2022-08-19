@@ -1,5 +1,6 @@
 const Express = require('express');
 const {randomBytes} = require('crypto');
+const axios = require("axios");
 const cors = require('cors');
 
 const postsStore = {};
@@ -12,7 +13,7 @@ app.get("/posts", (_, response) => {
   response.send(postsStore);
 });
 
-app.post("/posts", async (_, response) => {
+app.post("/posts", async (request, response) => {
   const postId = randomBytes(8).toString("hex");
 
   postsStore[postId] = {
@@ -28,8 +29,8 @@ app.post("/posts", async (_, response) => {
   response.status(201).send({ id: postId });
 });
 
-app.post("/events", (_, response) => {
-  console.log("Received Event", req.body.type);
+app.post("/events", (request, response) => {
+  console.log("Received Event", request.body.type);
 
   response.send({});
 });

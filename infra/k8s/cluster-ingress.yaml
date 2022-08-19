@@ -4,11 +4,19 @@ metadata:
   name: cluster-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
     - host: blog.com
       http:
         paths:
+          - path: /posts-with-comments
+            pathType: Prefix
+            backend:
+              service:
+                name: query-cluster-ip
+                port:
+                  name: query-port
           - path: /posts
             pathType: Prefix
             backend:
@@ -16,3 +24,17 @@ spec:
                 name: posts-cluster-ip
                 port:
                   name: posts-port
+          - path: /posts/?(.*)/comments
+            pathType: Prefix
+            backend:
+              service:
+                name: comments-cluster-ip
+                port:
+                  name: comments-port
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-cluster-ip
+                port:
+                  name: frontend-port

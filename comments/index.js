@@ -1,5 +1,6 @@
 const Express = require("express");
 const { randomBytes } = require("crypto");
+const axios = require("axios");
 const cors = require("cors");
 
 const app = Express();
@@ -10,7 +11,7 @@ app.use(cors());
 
 app.post("/posts/:id/comments", async (request, response) => {
   const commentId = randomBytes(8).toString("hex");
-  const postId = request.query.id;
+  const postId = request.params.id;
   const comments = commentsByPostId[postId] || [];
   
   comments.push({ id: commentId, content: request.body.content });
@@ -35,9 +36,9 @@ app.get("/posts/:id/comments", (request, response) => {
 });
 
 app.post("/events", async (request, response) => {
-  console.log("Event Received:", req.body.type);
+  console.log("Event Received:", request.body.type);
 
-  const { type, data } = req.body;
+  const { type, data } = request.body;
 
   if (type === "CommentModerated") {
     const { postId, id, status, content } = data;
@@ -59,7 +60,7 @@ app.post("/events", async (request, response) => {
     });
   }
 
-  res.send({});
+  response.send({});
 });
 
 app.listen(4001, () => {
