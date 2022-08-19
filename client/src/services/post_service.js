@@ -12,7 +12,7 @@ export default class PostService {
   };
 
   getPostsWithComments = () => {
-    return this.apiClient.get("http://localhost:4002/posts");
+    return this.apiClient.get("http://blog.com/posts");
   };
 
   createPost = (postData) => {

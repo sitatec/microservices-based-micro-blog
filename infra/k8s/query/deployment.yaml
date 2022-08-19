@@ -3,8 +3,10 @@ kind: Deployment
 metadata:
   name: query
 spec:
+  replicas: 1
   selector:
-    app: query
+    matchLabels:
+      app: query
   template:
     metadata:
       labels:

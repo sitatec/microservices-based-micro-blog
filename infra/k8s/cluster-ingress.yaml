@@ -2,9 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: cluster-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
-    - host: posts.com
+    - host: blog.com
       http:
         paths:
           - path: /posts

@@ -3,8 +3,10 @@ kind: Deployment
 metadata:
   name: moderation-deployment
 spec:
+  replicas: 1
   selector:
-    app: moderation
+    matchLabels:
+      app: moderation
   template:
     metadata:
       labels:
