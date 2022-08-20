@@ -36,6 +36,5 @@ app.post("/events", (request, response) => {
 });
 
 app.listen(4000, () => {
-  console.log('Test k8s deployment update from docker hub');
   console.log('Listening on port 4000');
 })
