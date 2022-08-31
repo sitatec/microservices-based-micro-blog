@@ -1,4 +1,4 @@
-# microservices-based-micro-blog
+# Micro Blog
 
 A small "blog" based on microservices architectural pattern, event driven architecture and database per service pattern. Built with nodejs, react and kubernetes.
 This app isn't meant to be a actual blog or have the best UX, I created it just to practice microservices and kubernetes, therefore every service use in memory database 
